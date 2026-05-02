@@ -96,5 +96,5 @@ fn_pgm_water_oisst=watermask_oisst_on_qd.pgm
 fn_tif_water_oisst=watermask_oisst_on_qd.tif
 convert -extract 1440x720 -size 1440x720  -depth 8 gray:${fn_raw_water_oisst} ${fn_pgm_water_oisst}
 gdal_translate -q -of GTiff -a_srs epsg:4326 -a_ullr -180 90 180 -90 -a_nodata 0 ${fn_pgm_water_oisst} ${fn_tif_water_oisst}
-# rm ${fn_pgm_water_oisst}
+rm ${fn_pgm_water_oisst}
 echo "Created ${fn_tif_water_oisst}"
