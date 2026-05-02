@@ -1,0 +1,67 @@
+
+COMMENTS_OISST_vs_CDRv6_ocean_masks.txt
+
+These comments refer to reprojections of data from the 25km polar stereo
+  grids of NOAA CDRv5 sea ice concentration data onto the OISST quarter-
+  degree latitude/longitude grid [QD].
+
+ Reference is made to the image:
+
+    combined_ocean_masks.gif
+
+which is color-coded:
+  White:  Both CDR and OISST indicate "ocean"
+  Black:  Both CDR and OISST indicate "land"
+          or OISST indicates not-ocean and the location is off-grid for CDR
+   Blue:  Only the CDR mask indicates "ocean"
+    Red:  Only the OISST mask indicates "ocean"
+
+
+Suggestion:
+  - During operational use, it is probably useful to implement an
+      "average" interpolation from the CDR fields to the QD
+  - Grid cells where only the CDR indicates ocean (blue) can be ignored
+     - Suggest keeping track of how much ice is ignored by multiplying
+       siconc by the area of these ignored grid cells?
+
+  Northern Hemisphere:
+    - There are many scattered pixels where the QD grid has ocean but there
+      is no direct CDR value (red), will need to be interpolated.
+      - Suggest keeping track of how much sea ice (=siconc*area) is
+        added to the grid because of this operation.
+
+    - Note:
+      The Great Lakes are not ocean and the CDR does not calculate sea ice on them.
+      This is different than some other sea ice concentration products, such
+      as the NASA Team (eg NSIDC-0051) and Bootstrap (NSIDC-0079) products.
+
+    - Values that are off-grid should probably be auto-set to zero
+      because the CDR cannot ever provide information about these ocean
+      grid cells.
+      - Places where this might be an issue are:
+        - in the southern part of the Sea of Okhotsk
+        - south of the Northern part of Honshu (Japan)
+        - Lake Ladoga (Eastern Baltic...appears as ocean in the OISST mask)
+        - off the coast of the Coast Mountains in western Canada
+
+  Southern Hemisphere:
+    - It appears that the OISST land/ocean mask in the Southern Hemisphere
+      does not consider the "permanent" ice shelves off Antarctica.  
+      - The CDR ocean mask combines land and ice-shelf and therefore does not
+        estimate sea ice over the Antarctic ice shelves, which are "ice on
+        the ocean" but are not considered "sea ice"
+    - Note: I used the Antarctica map from this URL for the names of the
+        ice shelves mentioned below:
+          https://worldmapwithcountries.net/map-of-antarctica/
+    - Areas where this issue are particularly pronounced are:
+      - Larsen Ice Shelf (Antarctic Peninsula)
+      - Ronne Ice Shelf (Weddell Sea)
+      - Ross Ice Shelf (Ross Sea)
+      - Amery Ice Shelf (off of East Antarctica)
+    - Suggestion:
+      - It is probably best to update the OISST mask in the Southern
+        Hemisphere so that it does not consider ice shelves to be
+        ocean.
+      - This is a bit tricky, because there are locations -- just like
+        in the Northern Hemisphere -- where the QD grid does have ocean
+        values for which the reprojected CDR data should be extrapolated.
