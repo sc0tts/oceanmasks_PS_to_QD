@@ -14,7 +14,9 @@ Run these scripts to generate all described files:
     - Save-As:
         combined_ocean_masks.gif
 
-Also, see comments in this file:
+Files to examine:
+  oisst_v3_ice_mask_1993-2024_corrected.nc
+  combined_ocean_masks.gif
   COMMENTS_OISST_vs_CDRv6_ocean_masks.txt
 
 
