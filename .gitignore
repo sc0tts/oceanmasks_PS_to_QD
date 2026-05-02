@@ -5,3 +5,7 @@ cdr_ancillary/
 cdrv6_version/
 nsidc0051_version/
 oisst_orig/
+
+*.nc
+*.dat
+*.tif
