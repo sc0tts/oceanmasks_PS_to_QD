@@ -1,6 +1,9 @@
 
 README_cdr_vs_qd_masks.txt
 
+Note: the scripts for this code are stored on GitHub at:
+  https://github.com/sc0tts/oceanmasks_PS_to_QD
+
 tldr
 ----
 Run these scripts to generate all described files:
