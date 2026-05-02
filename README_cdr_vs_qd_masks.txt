@@ -1,6 +1,25 @@
 
 README_cdr_vs_qd_masks.txt
 
+tldr
+----
+Run these scripts to generate all described files:
+  ./rework_oisst_mask.sh
+  ./process_watermasks.sh
+  python combine_ocean_masks.py
+  Start ImageJ:
+    - Import "Raw" combined_ocean_masks.dat as 8-bit 1440x720
+    - Import "LUT" combined_water_masks.lut
+        (this adds color to the image)
+    - Save-As:
+        combined_ocean_masks.gif
+
+Also, see comments in this file:
+  COMMENTS_OISST_vs_CDRv6_ocean_masks.txt
+
+
+Description
+-----------
 The goal here is to compare the ocean masks of the
   NOAA sea ice concentration CDR when those values
   are reprojected from the NSIDC 25km polar stereo
@@ -40,6 +59,10 @@ Correction of OISST mask
 The OISST as-provided does not plot properly with metadata-aware programs
   such as Panoply because the metadata do not properly describe the 
   data field.
+
+To create a "corrected" version of the OISST netCDF file, run:
+  rework_oisst_mask.sh
+which creates:
 
 The original metadata for the mask field is:
 

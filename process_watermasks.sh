@@ -53,7 +53,7 @@ python mask_from_cdranc.py ${rawfn_pss25} ${fn_rawland_pss25} ${fn_rawwater_pss2
 
 # Extract the land and water masks from the oisst file
 
-python extract_masks_qdgrid.py oisst_v3_ice_mask_1993-2024.nc oisst_land.dat oisst_water.dat
+python extract_masks_qdgrid.py ./oisst_orig/oisst_v3_ice_mask_1993-2024.nc oisst_land.dat oisst_water.dat
 
 
 # --------------------------------------------------- #
