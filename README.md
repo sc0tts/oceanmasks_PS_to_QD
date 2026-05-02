@@ -11,5 +11,5 @@ The code was developed using a variety of locally installed tools/packages, incl
 The code is not really designed to be installed or used by anyone but the author.  This is an archive of a preliminary data exploration.
 
 Useful comments are found here in:
-  `COMMENTS_OISST_vs_CDRv6_ocean_masks.txt`
-  `README_cdr_vs_qd_masks.txt`
+- `README_cdr_vs_qd_masks.txt`
+- `COMMENTS_OISST_vs_CDRv6_ocean_masks.txt`
