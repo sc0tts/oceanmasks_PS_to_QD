@@ -1,12 +1,13 @@
 
 .*sw?
 
-cdr_ancillary/
-cdrv6_version/
-nsidc0051_version/
-oisst_orig/
-
 *.nc
 *.dat
 *.tif
 *.gif
+
+cdr_ancillary/
+cdrv6_version/
+nsidc0051_version/
+oisst_orig/
+for_review/
