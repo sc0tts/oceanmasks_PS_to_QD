@@ -63,7 +63,7 @@
 # 		:cdm_data_type = "Grid" ;
 # }
 
-fn_orig=./oisst_v3_ice_mask_1993-2024.nc
+fn_orig=./oisst_orig/oisst_v3_ice_mask_1993-2024.nc
 fn_corrected=./oisst_v3_ice_mask_1993-2024_corrected.nc
 
 # Remove flag_values
