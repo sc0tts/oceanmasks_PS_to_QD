@@ -32,7 +32,7 @@ in_sh_orig="/data/nsidc0780/netcdf/NSIDC-0780_SeaIceRegions_PS-S3.125km_v1.0.nc"
 in_sh=mask_pss3125.nc
 cp -v $in_sh_orig $in_sh
 
-sh_geotransform="-3950000 3125 0 4350000 0 -3125 "
+sh_geotransform="'-3950000 3125 0 4350000 0 -3125 '"
 ncatted -O -a GeoTransform,crs,o,c,"$sh_geotransform" $in_sh
 
 in_sh_gdalvar="NETCDF:./${in_sh}:sea_ice_region_NASA_surface_mask"
@@ -86,39 +86,3 @@ NH_encoding
 
  35 ocean_disconnected
 SH_encoding
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

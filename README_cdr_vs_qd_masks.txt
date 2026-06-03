@@ -131,3 +131,27 @@ This allows a comparison of where there is/isn't ocean in the two masks.
           or OISST indicates not-ocean and the location is off-grid for CDR
    Blue:  Only the CDR mask indicates "ocean"
     Red:  Only the OISST mask indicates "ocean"
+
+=========================================================
+Because the sea ice concentration product treats ice shelf as non-ocean,
+it will be helpful to add an ice-shelf classification to the OISST mask
+
+Note: The GeoTransform string in the original NSIDC-0780 files is incorrect
+  The correct files are
+
+In subdir
+  ./iceshelves_to_qd/
+run
+ ./process_iceshelves.sh
+
+     This creates:
+       nh_surfmask.tif
+       sh_surfmask.tif
+
+Next, combine the ice shelves:
+  python add_iceshelves_to_qd.py
+      Reads:
+        oisst_v3_ice_mask_1993-2024_corrected.nc
+        nh_surfmask.tif
+        sh_surfmask.tif
+
