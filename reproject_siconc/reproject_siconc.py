@@ -243,8 +243,8 @@ def reproject_siconc(nfn, sfn):
     # Use specific i,j indices on the QD grid
     ivals, jvals = np.meshgrid(range(1440), range(720))
     is_great_lakes = (ivals > 351) & (ivals < 416) & (jvals > 163) & (jvals < 194) & ~is_icemask_land
-    is_russian_lake = (ivals > 839) & (ivals < 851) & (jvals > 112) & (jvals < 121) & ~is_icemask_land
-    is_lakes = is_great_lakes | is_russian_lake
+    is_lake_ladozhskoe = (ivals > 839) & (ivals < 851) & (jvals > 112) & (jvals < 121) & ~is_icemask_land
+    is_lakes = is_great_lakes | is_lake_ladozhskoe
 
     qd_siconc = np.zeros((720, 1440), dtype=np.uint8)
 
