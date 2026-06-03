@@ -239,13 +239,12 @@ def reproject_siconc(nfn, sfn):
     #   240: QD outside valid latitude range
     #   255: Not-yet-set value
 
+    # Hand-encode where the "Lakes" are in the Northern hemisphere
+    # Use specific i,j indices on the QD grid
     ivals, jvals = np.meshgrid(range(1440), range(720))
     is_great_lakes = (ivals > 351) & (ivals < 416) & (jvals > 163) & (jvals < 194) & ~is_icemask_land
-
     is_russian_lake = (ivals > 839) & (ivals < 851) & (jvals > 112) & (jvals < 121) & ~is_icemask_land
-
     is_lakes = is_great_lakes | is_russian_lake
-
 
     qd_siconc = np.zeros((720, 1440), dtype=np.uint8)
 
@@ -258,7 +257,7 @@ def reproject_siconc(nfn, sfn):
     qd_siconc[~is_outside_valid_lats & ~is_on_polarstereo] = 220  # ocean, but off PS grid
 
 
-    is_from_nh_siconc = is_on_polarstereo & is_icemask_water & (nh_siconc <= 100)
+    is_from_nh_siconc = is_on_polarstereo & is_icemask_water & (nh_siconc <= 100) & ~is_lakes
     is_from_sh_siconc = is_on_polarstereo & is_icemask_water & (sh_siconc <= 100)
     qd_siconc[is_from_nh_siconc] = nh_siconc[is_from_nh_siconc]
     qd_siconc[is_from_sh_siconc] = sh_siconc[is_from_sh_siconc]
