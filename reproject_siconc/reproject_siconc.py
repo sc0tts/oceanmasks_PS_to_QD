@@ -148,9 +148,6 @@ def reproject_siconc(nfn, sfn):
         num_val[num_val == 0] = 1  # Don't divide by zero
         avg_val = np.divide(sum_val, num_val)
         is_new_value = has_avg_val & ~is_water
-        #avg_val[~is_new_value] = 0
-        #sum_val[~is_new_value] = 0
-        #num_val[~is_new_value] = 0
         siconc_sh[is_new_value] = avg_val[is_new_value]
 
     siconc_sh = np.round(siconc_sh).astype(np.uint8)
@@ -261,8 +258,6 @@ def reproject_siconc(nfn, sfn):
     qd_siconc[~is_outside_valid_lats & ~is_on_polarstereo] = 220  # ocean, but off PS grid
 
 
-    #is_from_nh_siconc = is_on_polarstereo & ~is_icemask_land & ~is_outside_valid_lats & (nh_siconc <= 100) & ~is_ice_shelf
-    #is_from_sh_siconc = is_on_polarstereo & ~is_icemask_land & ~is_outside_valid_lats & (sh_siconc <= 100) & ~is_ice_shelf
     is_from_nh_siconc = is_on_polarstereo & is_icemask_water & (nh_siconc <= 100)
     is_from_sh_siconc = is_on_polarstereo & is_icemask_water & (sh_siconc <= 100)
     qd_siconc[is_from_nh_siconc] = nh_siconc[is_from_nh_siconc]
@@ -271,8 +266,6 @@ def reproject_siconc(nfn, sfn):
     ofn = 'qd_siconc.dat'
     qd_siconc.tofile(ofn)
     print(f'Wrote: {ofn}')
-
-    breakpoint()
 
 
 if __name__ == '__main__':
