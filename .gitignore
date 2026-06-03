@@ -5,6 +5,8 @@
 *.dat
 *.tif
 *.gif
+*.pgm
+*.aux.xml
 
 cdr_ancillary/
 cdrv6_version/
