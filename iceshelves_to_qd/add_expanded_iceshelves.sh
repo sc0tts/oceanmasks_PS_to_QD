@@ -18,8 +18,8 @@
 #       mask_psn3125.nc
 #     to
 #       newmask_psn3125.nc
-# Note:  41 iterations works
-python create_dilated_iceshelf_pss25.py 41
+# Note:  43 iterations works
+python create_dilated_iceshelf_pss25.py 43
 
 # NH
 in_nh=mask_psn3125.nc
